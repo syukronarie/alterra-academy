@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			background-color: #1e1e1e;
+		}
+
+		nav {
+			position: fixed;
+			background-color: blueviolet;
+			height: 80px;
+			width: 100vw;
+			top: 0;
+			z-index: 1;
+		}
+
+		.container {
+			height: 3000px;
+		}
+
+		.static {
+			position: static;
+			color: #fff;
+			right: 0;
+		}
+
+		.relative {
+			position: relative;
+			height: 300px;
+			background-color: antiquewhite;
+		}
+
+		.absolute {
+			position: absolute;
+			right: 0;
+			height: 80px;
+			width: 80px;
+			background-color: #888;
+		}
+
+		aside {
+			position: sticky;
+			top: 80px;
+			height: 80px;
+			width: 80px;
+			background-color: brown;
+		}
+	</style>
+	<body>
+		<nav></nav>
+		<div class="container">
+			<div class="relative">
+				<div class="absolute"></div>
+			</div>
+			<aside></aside>
+		</div>
+	</body>
+</html>
