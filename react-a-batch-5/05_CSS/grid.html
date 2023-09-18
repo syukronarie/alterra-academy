@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<style>
+		body {
+			margin: 0;
+		}
+		section {
+			display: grid;
+			grid-template-columns: 1fr 2fr 0.5fr 1fr;
+			grid-template-rows: 60px 5fr 1fr;
+			grid-template-areas:
+				"header header header header"
+				"main main . aside"
+				"footer footer footer footer";
+		}
+		header {
+			grid-area: header;
+			background-color: #f9943e;
+		}
+		main {
+			grid-area: main;
+			background-color: #4fbee6;
+		}
+
+		aside {
+			grid-area: aside;
+			background-color: #ec7271;
+		}
+
+		footer {
+			grid-area: footer;
+			height: 120px;
+			background-color: #77c576;
+		}
+
+		@media only screen and (max-width: 768px) {
+			section {
+				grid-template-columns: 1fr 2fr 1fr;
+				grid-template-rows: 60px 5fr 1fr;
+				grid-template-areas:
+					"header header header"
+					"aside main main"
+					"footer footer footer";
+			}
+		}
+		@media only screen and (max-width: 450px) {
+			section {
+				grid-template-columns: 1fr 2fr 1fr;
+				grid-template-rows: 60px 5fr 5fr 1fr;
+				grid-template-columns: 1fr;
+				grid-template-areas:
+					"header header header"
+					"main main main"
+					"aside aside aside"
+					"footer footer footer";
+			}
+		}
+	</style>
+	<body>
+		<section>
+			<header></header>
+			<main></main>
+			<aside></aside>
+			<footer></footer>
+		</section>
+	</body>
+</html>

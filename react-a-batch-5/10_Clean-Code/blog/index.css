@@ -1,0 +1,19 @@
+body {
+  margin: 0 100px;
+}
+.products {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.products_item h3 {
+  cursor: pointer;
+}
+
+.products_item img {
+  width: auto;
+  height: 160px;
+}
