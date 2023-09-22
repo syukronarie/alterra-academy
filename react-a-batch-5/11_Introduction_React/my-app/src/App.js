@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Routers from "./routers";
 
 export default function App() {
 	const [count, setCount] = useState(0);
@@ -8,10 +9,11 @@ export default function App() {
 	}
 
 	return (
-		<div>
-			<h1>Hello</h1>
-			<Count handleIncrement={handleIncrement} count={count} />
-		</div>
+		<Routers />
+		// <div>
+		// 	<h1>Hello</h1>
+		// 	<Count handleIncrement={handleIncrement} count={count} />
+		// </div>
 	);
 }
 

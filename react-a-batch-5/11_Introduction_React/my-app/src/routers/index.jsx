@@ -6,6 +6,7 @@ import ProductDetailsPage from "../pages/product-details-page";
 import LoginPage from "../pages/login-page";
 import PrivateRoute from "./private-route";
 import ProtectedRoute from "./protected-route";
+import TaskPage from "../pages/task-page";
 
 export default function Routers() {
 	return (
@@ -18,6 +19,7 @@ export default function Routers() {
 			<Route path="/" element={<ProtectedRoute />}>
 				<Route path="/login" element={<LoginPage />} />
 			</Route>
+			<Route path="/task" element={<TaskPage />} />
 		</Routes>
 	);
 }
