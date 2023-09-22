@@ -8,7 +8,6 @@ import {
 
 export default function TaskList() {
 	const tasks = useSelector(selectTasks);
-	const dispatch = useDispatch();
 
 	return (
 		<ul>
