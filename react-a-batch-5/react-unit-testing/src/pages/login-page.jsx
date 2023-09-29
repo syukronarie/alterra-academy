@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import auth from "../utils/auth";
+import { APIAuth } from "../apis/APIAuth";
 
 export default function LoginPage() {
 	const navigate = useNavigate();
@@ -9,17 +10,13 @@ export default function LoginPage() {
 		e.preventDefault();
 		const formData = new FormData(e.target);
 		const { username, password } = Object.fromEntries(formData);
-		fetch("https://dummyjson.com/auth/login", {
-			method: "POST",
-			headers: { "Content-Type": "application/json" },
-			body: JSON.stringify({
-				username,
-				password,
-			}),
-		}).then(async (res) => {
-			if (res.status === 400)
+		APIAuth.login({ username, password }).then(async (response) => {
+			console.log(response);
+			if (response.status === 400) {
 				return alert("your username or password is wrong");
-			const { token } = await res.json();
+			}
+
+			const { token } = response.data;
 			auth.storeAuthCredential(token);
 			return navigate("/");
 		});

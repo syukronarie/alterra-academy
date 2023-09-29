@@ -3,15 +3,14 @@ import { Link, useNavigate } from "react-router-dom";
 import auth from "../utils/auth";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../store/cart";
+import { APIproducts } from "../apis/APIproducts";
 
 export default function HomePage() {
 	const [state, setState] = useState();
 	const dispatch = useDispatch();
 
 	useEffect(() => {
-		fetch("https://dummyjson.com/products")
-			.then((res) => res.json())
-			.then(setState);
+		APIproducts.getProducts().then(setState);
 	}, []);
 
 	return (
