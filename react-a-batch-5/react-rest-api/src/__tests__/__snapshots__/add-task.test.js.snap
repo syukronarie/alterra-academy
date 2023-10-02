@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddTask should match with snapshots 1`] = `
+<div>
+  <input
+    placeholder="Add task"
+    value=""
+  />
+  <button>
+    Add
+  </button>
+</div>
+`;

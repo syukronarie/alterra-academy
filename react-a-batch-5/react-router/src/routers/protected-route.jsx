@@ -3,9 +3,9 @@ import auth from "../utils/auth";
 import { Navigate, Outlet } from "react-router-dom";
 
 export default function ProtectedRoute() {
-	if (auth.isAuthorized()) {
-		return <Navigate to="/" />;
-	}
+  if (auth.isAuthorized()) {
+    return <Navigate to="/" />;
+  }
 
-	return <Outlet />;
+  return <Outlet />;
 }
