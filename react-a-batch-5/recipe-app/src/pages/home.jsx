@@ -1,29 +1,38 @@
-import { collection, getDocs } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
+import { APIRecipe } from "../apis/APIrecipe";
+import { Button, Col, Row, Tag } from "antd";
 import { Link } from "react-router-dom";
-import { db } from "../configs/firebase";
+import { APIPost } from "../apis/APIPost";
 
 export function Home() {
 	const [recipes, setRecipes] = useState([]);
 
 	useEffect(() => {
-		const fetchPost = async () => {
-			await getDocs(collection(db, "recipe")).then((querySnapshot) => {
-				const newData = querySnapshot.docs.map((doc) => ({
-					...doc.data(),
-					id: doc.id,
-				}));
-				setRecipes(newData);
-				console.log(newData);
-			});
-		};
-		fetchPost();
+		APIRecipe.getRecipes().then(setRecipes);
+		APIPost.getPosts({ limit: 10, page: 0 });
 	}, []);
 
 	return (
 		<div>
-			<Link to="/add-recipe">Add Recipe</Link>
-			<Link to="/login">Login</Link>
+			{recipes &&
+				recipes.map((val) => (
+					<Row key={val.id}>
+						<Col>
+							<h2>{val.title}</h2>
+							{val.tags.map((tag) => (
+								<Tag key={tag}>{tag}</Tag>
+							))}
+							<p>
+								<b>Description: </b>
+								{val.description}
+							</p>
+							<p>
+								<b>Instructions: </b>
+								{val.instructions}
+							</p>
+						</Col>
+					</Row>
+				))}
 		</div>
 	);
 }

@@ -18,8 +18,11 @@ export class AuthService {
 	}
 
 	storeCredentialsToCookie({ idToken, oauthAccessToken, refreshToken }) {
-		if (idToken) Cookies.set("idToken", idToken);
-		if (oauthAccessToken) Cookies.set("oauthAccessToken", oauthAccessToken);
+		const expires = new Date();
+		expires.setSeconds(expires.getSeconds() + 10);
+		if (idToken) Cookies.set("idToken", idToken, { expires });
+		if (oauthAccessToken)
+			Cookies.set("oauthAccessToken", oauthAccessToken, { expires });
 		Cookies.set("refreshToken", refreshToken);
 	}
 
@@ -33,7 +36,7 @@ export class AuthService {
 		try {
 			await signOut(auth);
 			this.clearCredentialsFromCookie();
-			window.location.href = "/";
+			window.location.href = "/logoutsession";
 		} catch (err) {
 			console.error(err);
 		}

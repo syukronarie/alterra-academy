@@ -1,9 +1,8 @@
-import { Button, Form, Input, Select } from "antd";
+import TextArea from "antd/es/input/TextArea";
 // Upload, message
 // import { UploadOutlined } from "@ant-design/icons";
-import { collection, addDoc } from "firebase/firestore";
-import TextArea from "antd/es/input/TextArea";
-import { db } from "../../configs/firebase";
+import { Button, Form, Input, Select, message } from "antd";
+import { APIRecipe } from "../../apis/APIrecipe";
 
 const tags = [
 	"Breakfast",
@@ -50,12 +49,12 @@ export function AddRecipe() {
 
 	const onFinish = async (recipe) => {
 		try {
-			const docRef = await addDoc(collection(db, "recipe"), {
-				recipe,
-			});
-			console.log("Document written with ID: ", docRef.id);
-		} catch (e) {
-			console.error("Error adding document: ", e);
+			await APIRecipe.addRecipe(recipe);
+			message.success("created recipe successful");
+			form.resetFields();
+		} catch (error) {
+			console.error(error);
+			message.error("something went wrong");
 		}
 	};
 
