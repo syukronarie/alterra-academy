@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { APIRecipe } from "../apis/APIrecipe";
 import { Button, Col, Row, Tag } from "antd";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { APIPost } from "../apis/APIPost";
 
 export function Home() {
 	const [recipes, setRecipes] = useState([]);
+	const navigate = useNavigate();
 
 	useEffect(() => {
 		APIRecipe.getRecipes().then(setRecipes);
@@ -30,6 +31,13 @@ export function Home() {
 								<b>Instructions: </b>
 								{val.instructions}
 							</p>
+							<button
+								onClick={() =>
+									APIRecipe.deleteRecipe(val.id).then(() => navigate(0))
+								}
+							>
+								del
+							</button>
 						</Col>
 					</Row>
 				))}

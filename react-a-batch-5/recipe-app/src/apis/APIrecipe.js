@@ -1,4 +1,10 @@
-import { addDoc, collection, getDocs } from "firebase/firestore";
+import {
+	addDoc,
+	collection,
+	getDocs,
+	doc,
+	deleteDoc,
+} from "firebase/firestore";
 import { db } from "../configs/firebase";
 import { message } from "antd";
 
@@ -24,6 +30,17 @@ export const APIRecipe = {
 			return docRef;
 		} catch (e) {
 			console.error("Error adding document: ", e);
+			throw new Error(e);
+		}
+	},
+	deleteRecipe: async (id) => {
+		try {
+			console.log(id);
+			const recipeRef = doc(db, "recipe", id);
+			await deleteDoc(recipeRef);
+			return "Successfully deleted recipe";
+		} catch (e) {
+			console.error("Error deleting document: ", e);
 			throw new Error(e);
 		}
 	},
