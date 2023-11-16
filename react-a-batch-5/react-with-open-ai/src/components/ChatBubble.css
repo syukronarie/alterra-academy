@@ -1,0 +1,21 @@
+.chat-bubble {
+	max-width: 50%;
+	padding: 10px;
+	margin: 10px;
+	border-radius: 5px;
+	word-wrap: break-word;
+	display: flex;
+	box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.user {
+	background-color: #dad9d9;
+	color: #000;
+	align-self: flex-end;
+}
+
+.ai {
+	background-color: #f0faf9;
+	color: #000;
+	align-self: flex-start;
+}
